@@ -12,7 +12,7 @@ while going == True:
         submitname = str(input('what is your name? '))
         submitscore = str(input('what was your score? '))
         cursor.execute('INSERT INTO scoreboard VALUES ("' + submitname + '", "' + submitscore +'")')
-    connection.commit()
+        connection.commit()
     if operation == 'exit':
         going = False
 connection.close()
