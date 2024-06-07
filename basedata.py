@@ -1,9 +1,17 @@
 import sqlite3
+going = True
+operation = 'a'
+submitname = 'a'
+submitscore = 0
 connection = sqlite3.connect("scoreboard.db")
-print(connection.total_changes)
 cursor = connection.cursor()
-cursor.execute("CREATE TABLE IF NOT EXISTS scoreboard (Name TEXT, score INTEGER)")
-cursor.execute("INSERT INTO scoreboard VALUES ('bob', 10000)")
-cursor.execute("INSERT INTO scoreboard VALUES ('jimmy', 99999)")
-cursor.execute("INSERT INTO scoreboard VALUES ('eve', 50000)")
+cursor.execute("CREATE TABLE IF NOT EXISTS scoreboard (name TEXT, score TEXT)")
+while going == True:
+    operation = input("what would you like to do? ")
+    if operation == 'add':
+        submitname = str(input('what is your name? '))
+        submitscore = str(input('what was your score? '))
+        cursor.execute('INSERT INTO scoreboard VALUES ("' + submitname + '", "' + submitscore +'")')
+    if operation == 'exit':
+        going = False
 connection.commit()
